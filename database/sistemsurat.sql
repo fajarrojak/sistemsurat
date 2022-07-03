@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2022 at 06:55 AM
+-- Generation Time: Jul 03, 2022 at 07:31 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -24,6 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `disposisi`
+--
+
+CREATE TABLE `disposisi` (
+  `id` int(11) NOT NULL,
+  `id_surat` int(11) NOT NULL,
+  `catatan_disposisi` text NOT NULL,
+  `penerima_disposisi` int(11) NOT NULL,
+  `tanggal_disposisi` date NOT NULL,
+  `pembuat_disposisi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `groups`
 --
 
@@ -38,8 +53,9 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
-(1, 'admin', 'Administrator'),
-(2, 'members', 'General User');
+(1, 'kapus', 'Kepala pusat'),
+(2, 'koordinator', 'koordinator'),
+(6, 'subkoordinator', 'subkoordinator');
 
 -- --------------------------------------------------------
 
@@ -92,10 +108,16 @@ INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (3, 3),
 (1, 92),
 (2, 92),
-(1, 108),
-(2, 108),
 (1, 44),
-(0, 110);
+(0, 110),
+(1, 114),
+(1, 111),
+(2, 111),
+(6, 111),
+(1, 112),
+(1, 113),
+(2, 113),
+(6, 113);
 
 -- --------------------------------------------------------
 
@@ -122,17 +144,20 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id_menu`, `sort`, `level`, `parent_id`, `icon`, `label`, `link`, `id`, `id_menu_type`) VALUES
 (1, 0, 1, 0, 'empty', 'MAIN NAVIGATION', '#', '#', 1),
 (3, 1, 2, 1, 'fas fa-tachometer-alt', 'Dashboard', 'dashboard', '#', 1),
-(4, 9, 2, 40, 'fas fa-table', 'CRUD Generator', 'crudbuilder', '1', 1),
-(8, 8, 2, 40, 'fas fa-bars', 'Menu', 'cms/menu/side-menu', 'navMenu', 1),
-(40, 7, 1, 0, 'empty', 'DEV', '#', '#', 1),
-(42, 4, 2, 92, 'fas fa-users-cog', 'User', '#', '1', 1),
-(43, 5, 3, 42, 'fas fa-angle-double-right', 'Users', 'users', '1', 1),
-(44, 6, 3, 42, 'fas fa-angle-double-right', 'Hak akses', 'groups', '2', 1),
-(89, 11, 2, 110, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
-(92, 2, 1, 0, 'empty', 'MASTER DATA', '#', 'masterdata', 1),
-(107, 12, 2, 110, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
-(108, 3, 2, 92, 'fab fa-affiliatetheme', 'Surat Masuk', '#', '#', 1),
-(110, 10, 1, 0, 'fab fa-500px', 'Hidden', '#', '#', 1);
+(4, 13, 2, 40, 'fas fa-table', 'CRUD Generator', 'crudbuilder', '1', 1),
+(8, 12, 2, 40, 'fas fa-bars', 'Menu', 'cms/menu/side-menu', 'navMenu', 1),
+(40, 11, 1, 0, 'empty', 'DEV', '#', '#', 1),
+(42, 8, 2, 92, 'fas fa-users-cog', 'User', '#', '1', 1),
+(43, 9, 3, 42, 'fas fa-angle-double-right', 'Users', 'users', '1', 1),
+(44, 10, 3, 42, 'fas fa-angle-double-right', 'Hak akses', 'groups', '2', 1),
+(89, 15, 2, 110, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
+(92, 6, 1, 0, 'empty', 'MASTER DATA', '#', 'masterdata', 1),
+(107, 16, 2, 110, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
+(110, 14, 1, 0, 'fab fa-500px', 'Hidden', '#', '#', 1),
+(111, 2, 2, 1, 'fas fa-envelope', 'Kelola Surat Masuk', 'Surat_masuk', '#', 1),
+(112, 3, 2, 1, 'far fa-envelope-open', 'Kelola Surat Keluar', 'Surat_keluar', '#', 1),
+(113, 4, 2, 1, 'fas fa-envelope-square', 'Disposisi', 'Disposisi', '#', 1),
+(114, 5, 2, 1, 'fab fa-envira', 'View Laporan', '#', '#', 1);
 
 -- --------------------------------------------------------
 
@@ -175,6 +200,27 @@ INSERT INTO `setting` (`id`, `kode`, `nama`, `nilai`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `surat`
+--
+
+CREATE TABLE `surat` (
+  `id_surat` int(11) NOT NULL,
+  `isi_surat` text NOT NULL,
+  `file_surat` varchar(100) NOT NULL,
+  `jenis_surat` int(11) NOT NULL,
+  `no_surat` varchar(100) NOT NULL,
+  `tanggal_surat` date NOT NULL,
+  `tanggal_dikirim` date NOT NULL,
+  `tanggal_terima` date NOT NULL,
+  `jumlah_lampiran` int(11) NOT NULL,
+  `pengirim` varchar(100) NOT NULL,
+  `penerima` varchar(100) NOT NULL,
+  `perihal` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -194,11 +240,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `password`, `email`, `active`, `first_name`, `last_name`, `phone`, `image`) VALUES
-(1, '$2y$08$B5Vmtuynwx0s6EqHO5/.WOt/LBq/RDZt3XbOhi1/7.cSbdRc.WKpe', 'admin@muhakbar.com', 1, 'Akbar', 'Admin', '2132132', 'akbr_pp_2.jpg'),
-(2, '$2y$08$ipVAkJ.rjy35wARE9Px47eS2k.gz2FPYy14M019VFwLtBcUax2YJS', 'member@member.com', 1, 'Member', 'Apps', '0909090', 'default.jpg'),
-(10, '$2y$08$VOexYeVPbaUJxo8LQV9J8euGsLys3nV1n9J5WIzUmFy7mLtlMVyRG', 'coba@gmail.com', 1, 'coba', '1', '123', 'default.jpg'),
-(11, '$2y$08$dOmjAzvDIdZqqrQ8cywKMeDXAR.5SecJZc.Bp4NwpJzFURP.mr9PG', 'xx@xx.com', 1, 'x', 'AKBAR', '077788778', 'Web_capture_9-6-2022_163744_web_whatsapp_com.jpg'),
-(12, '$2y$08$gIcKdOUAjrcamqQDATEIduem.6hJXOSAy.YOcnozQMwvfJtU0LuQG', 'admin1@gmail.com', 1, 'admin', '1', '+6285158339041', 'default.jpg');
+(12, '$2y$08$gIcKdOUAjrcamqQDATEIduem.6hJXOSAy.YOcnozQMwvfJtU0LuQG', 'admin1@gmail.com', 1, 'admin', '1', '+6285158339041', 'default.jpg'),
+(13, '$2y$08$svPbFR4WLW85xta8FLion.t21zEsBfl4d34grG7K8kkBULxgXcZXq', 'fajarsomantri124@gmail.com', 1, 'fajar', 'somantri', '085158339041', 'default.jpg'),
+(14, '$2y$08$RQ0NZ3jYK4QIzCNfyI/cAuVUxqpoOuVaj5Y.F9ttMeFAwDB4ZpCTe', 'rojaksomantri12@gmail.com', 1, 'rojak', 'soman', '08951267543', 'default.jpg'),
+(15, '$2y$08$Unq.bwfwfF1fdkZMicNfuOdfBGJwFYJD0Z0kE3/Cew1QzsV0AQxvS', 'januarsomantri123@gmail.com', 1, 'januar', 'somantri', '08523423675', 'default.jpg'),
+(16, '$2y$08$GG9cB4qJ82hm1vMt/Jq8G.tWqGh2aFfkf11gXJ8y44HJZYpZL/RN2', 'febrisomantri123@gmail.com', 1, 'febri', 'somantri', '08946467464', 'default.jpg'),
+(17, '$2y$08$9ywd2wU.Ceu/MAhiwd5spesE3moJHq1LuOR1sKj05jaP4bJgNTrWu', 'akusiapa12@gmail.com', 1, 'aku', 'siapa', '089656478847', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -217,15 +264,22 @@ CREATE TABLE `users_groups` (
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(3, 1, 1),
-(31, 2, 2),
-(32, 10, 1),
-(35, 11, 2),
-(36, 12, 1);
+(36, 12, 1),
+(37, 13, 2),
+(39, 14, 6),
+(40, 15, 2),
+(41, 16, 6),
+(42, 17, 2);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `disposisi`
+--
+ALTER TABLE `disposisi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `groups`
@@ -252,6 +306,12 @@ ALTER TABLE `setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `surat`
+--
+ALTER TABLE `surat`
+  ADD PRIMARY KEY (`id_surat`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -271,16 +331,22 @@ ALTER TABLE `users_groups`
 --
 
 --
+-- AUTO_INCREMENT for table `disposisi`
+--
+ALTER TABLE `disposisi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `menu_type`
@@ -295,16 +361,22 @@ ALTER TABLE `setting`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `surat`
+--
+ALTER TABLE `surat`
+  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables
