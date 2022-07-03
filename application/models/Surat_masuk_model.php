@@ -18,6 +18,7 @@ class Surat_masuk_model extends CI_Model
     // get all
     function get_all()
     {
+        $this->db->where('jenis_surat', 1);
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }
@@ -28,41 +29,24 @@ class Surat_masuk_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
-    function total_rows($q = NULL) {
-        $this->db->like('id_surat', $q);
-	$this->db->or_like('isi_surat', $q);
-	$this->db->or_like('file_surat', $q);
-	$this->db->or_like('jenis_surat', $q);
-	$this->db->or_like('no_surat', $q);
-	$this->db->or_like('tanggal_surat', $q);
-	$this->db->or_like('tanggal_dikirim', $q);
-	$this->db->or_like('tanggal_terima', $q);
-	$this->db->or_like('jumlah_lampiran', $q);
-	$this->db->or_like('pengirim', $q);
-	$this->db->or_like('penerima', $q);
-	$this->db->or_like('perihal', $q);
-	$this->db->from($this->table);
+    function total_rows($q = NULL)
+    {
+        $this->db->like('perihal', $q);
+        $this->db->from($this->table);
+        $this->db->where('jenis_surat', 1);
+
         return $this->db->count_all_results();
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL) {
+    function get_limit_data($limit, $start = 0, $q = NULL)
+    {
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('id_surat', $q);
-	$this->db->or_like('isi_surat', $q);
-	$this->db->or_like('file_surat', $q);
-	$this->db->or_like('jenis_surat', $q);
-	$this->db->or_like('no_surat', $q);
-	$this->db->or_like('tanggal_surat', $q);
-	$this->db->or_like('tanggal_dikirim', $q);
-	$this->db->or_like('tanggal_terima', $q);
-	$this->db->or_like('jumlah_lampiran', $q);
-	$this->db->or_like('pengirim', $q);
-	$this->db->or_like('penerima', $q);
-	$this->db->or_like('perihal', $q);
-	$this->db->limit($limit, $start);
+        $this->db->like('perihal', $q);
+        $this->db->where('jenis_surat', 1);
+        $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
@@ -87,13 +71,13 @@ class Surat_masuk_model extends CI_Model
     }
 
     // delete bulkdata
-    function deletebulk(){
+    function deletebulk()
+    {
         $data = $this->input->post('msg_', TRUE);
-        $arr_id = explode(",", $data); 
+        $arr_id = explode(",", $data);
         $this->db->where_in($this->id, $arr_id);
         return $this->db->delete($this->table);
     }
-
 }
 
 /* End of file Surat_masuk_model.php */

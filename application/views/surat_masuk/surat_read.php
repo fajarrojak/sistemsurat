@@ -1,32 +1,104 @@
 <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-12">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Surat Detail</h3>
                 <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse">
-                    <i class="fa fa-minus"></i></button>
-                     <button type="button" class="btn btn-box-tool" onclick="location.reload()" title="Collapse">
-              <i class="fa fa-refresh"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" onclick="location.reload()" title="Collapse">
+                        <i class="fa fa-refresh"></i></button>
                 </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-        <table class="table">
-	    <tr><td>Isi Surat</td><td><?php echo $isi_surat; ?></td></tr>
-	    <tr><td>File Surat</td><td><?php echo $file_surat; ?></td></tr>
-	    <tr><td>Jenis Surat</td><td><?php echo $jenis_surat; ?></td></tr>
-	    <tr><td>No Surat</td><td><?php echo $no_surat; ?></td></tr>
-	    <tr><td>Tanggal Surat</td><td><?php echo $tanggal_surat; ?></td></tr>
-	    <tr><td>Tanggal Dikirim</td><td><?php echo $tanggal_dikirim; ?></td></tr>
-	    <tr><td>Tanggal Terima</td><td><?php echo $tanggal_terima; ?></td></tr>
-	    <tr><td>Jumlah Lampiran</td><td><?php echo $jumlah_lampiran; ?></td></tr>
-	    <tr><td>Pengirim</td><td><?php echo $pengirim; ?></td></tr>
-	    <tr><td>Penerima</td><td><?php echo $penerima; ?></td></tr>
-	    <tr><td>Perihal</td><td><?php echo $perihal; ?></td></tr>
-	    <tr><td><a href="<?php echo site_url('surat_masuk') ?>" class="btn bg-purple">Cancel</a></td></tr>
-	</table>
+                <div class="col-md-12">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-4">
+                            <b>Nomor surat</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php echo $no_surat; ?>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-4">
+                            <b>Tanggal surat</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php echo date_surat($tanggal_surat); ?>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-4">
+                            <b>Tanggal terima</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php echo date_surat($tanggal_terima); ?>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-4">
+                            <b>Jumlah lampiran</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php echo $jumlah_lampiran; ?>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-4">
+                            <b>Perihal</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php echo $perihal; ?>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-4">
+                            <b>Pengirim</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php echo $pengirim; ?>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-4">
+                            <b>Penerima</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php echo $penerima; ?>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-12">
+                            <p><?php echo $isi_surat; ?></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <b>File surat</b>
+                        </div>
+                        <div class="col-md-8">
+                            <?php if ($file_surat != '') { ?>
+                                <a href="<?php echo base_url('assets/uploads/files/surat/surat_masuk/' . $file_surat); ?>" target="_blank">
+                                    <?php echo $file_surat; ?>
+                                </a>
+                            <?php } else { ?>
+                                <span class="text-muted">Tidak ada file lampiran</span>
+                            <?php } ?>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>

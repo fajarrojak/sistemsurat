@@ -55,7 +55,9 @@ $setting_aplikasi = $this->db->get('setting')->row();
   <!-- FastClick -->
   <script src="<?= base_url(); ?>assets/bower_components/fastclick/lib/fastclick.js"></script>
   <script src="<?= base_url(); ?>assets/plugins/iCheck/icheck.min.js"></script>
-
+  <!-- CSS Datepicker -->
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-datetimepicker.min.css">
   <!-- AdminLTE App -->
   <!-- DataTables -->
   <script src="<?= base_url(); ?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -68,7 +70,10 @@ $setting_aplikasi = $this->db->get('setting')->row();
   <!-- Select2 -->
   <script src="<?= base_url(); ?>assets/bower_components/bootstrap-select/js/bootstrap-select.js"></script>
   <script src="<?= base_url(); ?>assets/bower_components/select2/dist/js/select2.full.min.js"></script>
-
+  <!-- Datepicker -->
+  <script src="<?= base_url(); ?>assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="<?= base_url(); ?>assets/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="<?= base_url(); ?>assets/js/bootstrap-datetimepicker.id.js"></script>
   <!-- mask -->
   <script src="<?= base_url(); ?>assets/dist/js/jquery.mask.min.js"></script>
   <style type="text/css">
@@ -374,6 +379,17 @@ $setting_aplikasi = $this->db->get('setting')->row();
     <?php } ?>
 
     //var notification = alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
+    $('.formdate').datepicker({
+      format: "yyyy-mm-dd",
+      autoclose: true,
+      weekStart: 1,
+      todayBtn: 1,
+      // autoclose: 1,
+      todayHighlight: 1,
+      startView: 0,
+      forceParse: 0,
+      showMeridian: 1
+    });
   </script>
 
 </body>

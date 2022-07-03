@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2022 at 07:31 AM
+-- Generation Time: Jul 03, 2022 at 09:41 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -207,7 +207,7 @@ CREATE TABLE `surat` (
   `id_surat` int(11) NOT NULL,
   `isi_surat` text NOT NULL,
   `file_surat` varchar(100) NOT NULL,
-  `jenis_surat` int(11) NOT NULL,
+  `jenis_surat` int(11) NOT NULL COMMENT '1 = surat masuk\r\n2 = surat keluar',
   `no_surat` varchar(100) NOT NULL,
   `tanggal_surat` date NOT NULL,
   `tanggal_dikirim` date NOT NULL,
@@ -217,6 +217,15 @@ CREATE TABLE `surat` (
   `penerima` varchar(100) NOT NULL,
   `perihal` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `surat`
+--
+
+INSERT INTO `surat` (`id_surat`, `isi_surat`, `file_surat`, `jenis_surat`, `no_surat`, `tanggal_surat`, `tanggal_dikirim`, `tanggal_terima`, `jumlah_lampiran`, `pengirim`, `penerima`, `perihal`) VALUES
+(2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat.pdf', 2, '958690688678s', '2022-07-15', '2022-07-19', '0000-00-00', 1, 'ppsdm hrhr', 'pt git', 'Wisuda'),
+(3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat8.pdf', 1, '958690688678sssxxxx', '2022-07-28', '0000-00-00', '2022-07-27', 1, 'ppsdm hrhr', 'pt git', 'Wisuda'),
+(4, 'hahahahahahahahahahahha', 'surat1.pdf', 2, 'ut58ungug5y', '2022-07-14', '2022-07-16', '0000-00-00', 1, 'ppsdm hr', 'bnn', 'tes');
 
 -- --------------------------------------------------------
 
@@ -364,7 +373,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

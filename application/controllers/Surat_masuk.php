@@ -9,7 +9,7 @@ class Surat_masuk extends CI_Controller
     {
         parent::__construct();
         $c_url = $this->router->fetch_class();
-        $this->layout->auth(); 
+        $this->layout->auth();
         $this->layout->auth_privilege($c_url);
         $this->load->model('Surat_masuk_model');
         $this->load->library('form_validation');
@@ -19,7 +19,7 @@ class Surat_masuk extends CI_Controller
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 'surat_masuk?q=' . urlencode($q);
             $config['first_url'] = base_url() . 'surat_masuk?q=' . urlencode($q);
@@ -43,104 +43,128 @@ class Surat_masuk extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $data['title'] = 'Surat Masuk';
+        $data['title'] = 'Kelola Surat Masuk';
         $data['subtitle'] = '';
         $data['crumb'] = [
-            'Surat Masuk' => '',
+            'Kelola Surat Masuk' => '',
         ];
 
         $data['page'] = 'surat_masuk/surat_list';
         $this->load->view('template/backend', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->Surat_masuk_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'id_surat' => $row->id_surat,
-		'isi_surat' => $row->isi_surat,
-		'file_surat' => $row->file_surat,
-		'jenis_surat' => $row->jenis_surat,
-		'no_surat' => $row->no_surat,
-		'tanggal_surat' => $row->tanggal_surat,
-		'tanggal_dikirim' => $row->tanggal_dikirim,
-		'tanggal_terima' => $row->tanggal_terima,
-		'jumlah_lampiran' => $row->jumlah_lampiran,
-		'pengirim' => $row->pengirim,
-		'penerima' => $row->penerima,
-		'perihal' => $row->perihal,
-	    );
-        $data['title'] = 'Surat Masuk';
-        $data['subtitle'] = '';
-        $data['crumb'] = [
-            'Dashboard' => '',
-        ];
+                'id_surat' => $row->id_surat,
+                'isi_surat' => $row->isi_surat,
+                'file_surat' => $row->file_surat,
+                'jenis_surat' => $row->jenis_surat,
+                'no_surat' => $row->no_surat,
+                'tanggal_surat' => $row->tanggal_surat,
+                'tanggal_dikirim' => $row->tanggal_dikirim,
+                'tanggal_terima' => $row->tanggal_terima,
+                'jumlah_lampiran' => $row->jumlah_lampiran,
+                'pengirim' => $row->pengirim,
+                'penerima' => $row->penerima,
+                'perihal' => $row->perihal,
+            );
+            $data['title'] = 'Kelola Surat Masuk';
+            $data['subtitle'] = '';
+            $data['crumb'] = [
+                'Kelola Surat Masuk' => '',
+            ];
 
-        $data['page'] = 'surat_masuk/surat_read';
-        $this->load->view('template/backend', $data);
+            $data['page'] = 'surat_masuk/surat_read';
+            $this->load->view('template/backend', $data);
         } else {
             $this->session->set_flashdata('error', 'Record Not Found');
             redirect(site_url('surat_masuk'));
         }
     }
 
-    public function create() 
+    public function create()
     {
+
         $data = array(
             'button' => 'Create',
-            'action' => site_url('surat_masuk/create_action'),
-	    'id_surat' => set_value('id_surat'),
-	    'isi_surat' => set_value('isi_surat'),
-	    'file_surat' => set_value('file_surat'),
-	    'jenis_surat' => set_value('jenis_surat'),
-	    'no_surat' => set_value('no_surat'),
-	    'tanggal_surat' => set_value('tanggal_surat'),
-	    'tanggal_dikirim' => set_value('tanggal_dikirim'),
-	    'tanggal_terima' => set_value('tanggal_terima'),
-	    'jumlah_lampiran' => set_value('jumlah_lampiran'),
-	    'pengirim' => set_value('pengirim'),
-	    'penerima' => set_value('penerima'),
-	    'perihal' => set_value('perihal'),
-	);
-        $data['title'] = 'Surat Masuk';
+            'action' => base_url('surat_masuk/create_action'),
+            'id_surat' => set_value('id_surat'),
+            'isi_surat' => set_value('isi_surat'),
+            'file_surat' => set_value('file_surat'),
+            'jenis_surat' => set_value('jenis_surat'),
+            'no_surat' => set_value('no_surat'),
+            'tanggal_surat' => set_value('tanggal_surat'),
+            'tanggal_dikirim' => set_value('tanggal_dikirim'),
+            'tanggal_terima' => set_value('tanggal_terima'),
+            'jumlah_lampiran' => set_value('jumlah_lampiran'),
+            'pengirim' => set_value('pengirim'),
+            'penerima' => set_value('penerima'),
+            'perihal' => set_value('perihal'),
+        );
+        $data['title'] = 'Kelola Surat Masuk';
         $data['subtitle'] = '';
         $data['crumb'] = [
-            'Dashboard' => '',
+            'Kelol Surat Masuk' => '',
         ];
 
         $data['page'] = 'surat_masuk/surat_form';
         $this->load->view('template/backend', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
-            $data = array(
-		'isi_surat' => $this->input->post('isi_surat',TRUE),
-		'file_surat' => $this->input->post('file_surat',TRUE),
-		'jenis_surat' => $this->input->post('jenis_surat',TRUE),
-		'no_surat' => $this->input->post('no_surat',TRUE),
-		'tanggal_surat' => $this->input->post('tanggal_surat',TRUE),
-		'tanggal_dikirim' => $this->input->post('tanggal_dikirim',TRUE),
-		'tanggal_terima' => $this->input->post('tanggal_terima',TRUE),
-		'jumlah_lampiran' => $this->input->post('jumlah_lampiran',TRUE),
-		'pengirim' => $this->input->post('pengirim',TRUE),
-		'penerima' => $this->input->post('penerima',TRUE),
-		'perihal' => $this->input->post('perihal',TRUE),
-	    );
+            if (isset($_FILES['file_surat'])) {
+                $file_surat = $_FILES['file_surat'];
+            } else {
+                $file_surat = null;
+            }
 
-            $this->Surat_masuk_model->insert($data);
-            $this->session->set_flashdata('success', 'Create Record Success');
-            redirect(site_url('surat_masuk'));
+            if ($file_surat) {
+                $config['upload_path'] = './assets/uploads/files/surat/surat_masuk/';
+                $config['allowed_types'] = 'pdf';
+                $config['max_size']     = '2048';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file_surat')) {
+
+                    $new_file_surat = htmlspecialchars($this->upload->data('file_name'));
+
+
+                    $data = array(
+                        'isi_surat' => $this->input->post('isi_surat', TRUE),
+                        'file_surat' => $new_file_surat,
+                        'jenis_surat' => 1,
+                        'no_surat' => $this->input->post('no_surat', TRUE),
+                        'tanggal_surat' => $this->input->post('tanggal_surat', TRUE),
+                        // 'tanggal_dikirim' => $this->input->post('tanggal_dikirim', TRUE),
+                        'tanggal_terima' => $this->input->post('tanggal_terima', TRUE),
+                        'jumlah_lampiran' => $this->input->post('jumlah_lampiran', TRUE),
+                        'pengirim' => $this->input->post('pengirim', TRUE),
+                        'penerima' => $this->input->post('penerima', TRUE),
+                        'perihal' => $this->input->post('perihal', TRUE),
+                    );
+
+                    $this->Surat_masuk_model->insert($data);
+                    $this->session->set_flashdata('success', 'Create Record Success');
+                    redirect(site_url('surat_masuk'));
+                } else {
+                    $this->session->set_flashdata('success', $this->upload->display_errors());
+                    redirect('surat_masuk');
+                }
+            }
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->Surat_masuk_model->get_by_id($id);
 
@@ -148,61 +172,88 @@ class Surat_masuk extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('surat_masuk/update_action'),
-		'id_surat' => set_value('id_surat', $row->id_surat),
-		'isi_surat' => set_value('isi_surat', $row->isi_surat),
-		'file_surat' => set_value('file_surat', $row->file_surat),
-		'jenis_surat' => set_value('jenis_surat', $row->jenis_surat),
-		'no_surat' => set_value('no_surat', $row->no_surat),
-		'tanggal_surat' => set_value('tanggal_surat', $row->tanggal_surat),
-		'tanggal_dikirim' => set_value('tanggal_dikirim', $row->tanggal_dikirim),
-		'tanggal_terima' => set_value('tanggal_terima', $row->tanggal_terima),
-		'jumlah_lampiran' => set_value('jumlah_lampiran', $row->jumlah_lampiran),
-		'pengirim' => set_value('pengirim', $row->pengirim),
-		'penerima' => set_value('penerima', $row->penerima),
-		'perihal' => set_value('perihal', $row->perihal),
-	    );
-            $data['title'] = 'Surat Masuk';
-        $data['subtitle'] = '';
-        $data['crumb'] = [
-            'Dashboard' => '',
-        ];
+                'id_surat' => set_value('id_surat', $row->id_surat),
+                'isi_surat' => set_value('isi_surat', $row->isi_surat),
+                'file_surat' => set_value('file_surat', $row->file_surat),
+                'jenis_surat' => set_value('jenis_surat', $row->jenis_surat),
+                'no_surat' => set_value('no_surat', $row->no_surat),
+                'tanggal_surat' => set_value('tanggal_surat', $row->tanggal_surat),
 
-        $data['page'] = 'surat_masuk/surat_form';
-        $this->load->view('template/backend', $data);
+                'tanggal_terima' => set_value('tanggal_terima', $row->tanggal_terima),
+                'jumlah_lampiran' => set_value('jumlah_lampiran', $row->jumlah_lampiran),
+                'pengirim' => set_value('pengirim', $row->pengirim),
+                'penerima' => set_value('penerima', $row->penerima),
+                'perihal' => set_value('perihal', $row->perihal),
+            );
+            $data['title'] = 'Kelola Surat Masuk';
+            $data['subtitle'] = '';
+            $data['crumb'] = [
+                'Kelola Surat Masuk' => '',
+            ];
+
+            $data['page'] = 'surat_masuk/surat_form';
+            $this->load->view('template/backend', $data);
         } else {
             $this->session->set_flashdata('error', 'Record Not Found');
             redirect(site_url('surat_masuk'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_surat', TRUE));
         } else {
+            $data['surat'] = $this->Surat_masuk_model->get_by_id($this->input->post('id_surat', TRUE));
+
+            if (isset($_FILES['file_surat'])) {
+                $file_surat = $_FILES['file_surat'];
+            } else {
+                $file_surat = null;
+            }
+
+            if ($file_surat) {
+                $config['upload_path'] = './assets/uploads/files/surat/surat_masuk/';
+                $config['allowed_types'] = 'pdf';
+                $config['max_size']     = '2048';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file_surat')) {
+                    $old_file_surat = $data['surat']->file_surat;
+                    if ($old_file_surat != 'default.jpg') {
+                        unlink(FCPATH . 'assets/uploads/files/surat/surat_masuk/' . $old_file_surat);
+                    }
+
+                    $file_surat_name = htmlspecialchars($this->upload->data('file_name'));
+                } else {
+                    $file_surat_name = $data['surat']->file_surat;
+                }
+            }
+
             $data = array(
-		'isi_surat' => $this->input->post('isi_surat',TRUE),
-		'file_surat' => $this->input->post('file_surat',TRUE),
-		'jenis_surat' => $this->input->post('jenis_surat',TRUE),
-		'no_surat' => $this->input->post('no_surat',TRUE),
-		'tanggal_surat' => $this->input->post('tanggal_surat',TRUE),
-		'tanggal_dikirim' => $this->input->post('tanggal_dikirim',TRUE),
-		'tanggal_terima' => $this->input->post('tanggal_terima',TRUE),
-		'jumlah_lampiran' => $this->input->post('jumlah_lampiran',TRUE),
-		'pengirim' => $this->input->post('pengirim',TRUE),
-		'penerima' => $this->input->post('penerima',TRUE),
-		'perihal' => $this->input->post('perihal',TRUE),
-	    );
+                'isi_surat' => $this->input->post('isi_surat', TRUE),
+                'file_surat' => $file_surat_name,
+                'jenis_surat' => $this->input->post('jenis_surat', TRUE),
+                'no_surat' => $this->input->post('no_surat', TRUE),
+                'tanggal_surat' => $this->input->post('tanggal_surat', TRUE),
+                'tanggal_terima' => $this->input->post('tanggal_terima', TRUE),
+                'jumlah_lampiran' => $this->input->post('jumlah_lampiran', TRUE),
+                'pengirim' => $this->input->post('pengirim', TRUE),
+                'penerima' => $this->input->post('penerima', TRUE),
+                'perihal' => $this->input->post('perihal', TRUE),
+            );
 
             $this->Surat_masuk_model->update($this->input->post('id_surat', TRUE), $data);
+
             $this->session->set_flashdata('success', 'Update Record Success');
             redirect(site_url('surat_masuk'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->Surat_masuk_model->get_by_id($id);
 
@@ -216,34 +267,34 @@ class Surat_masuk extends CI_Controller
         }
     }
 
-    public function deletebulk(){
+    public function deletebulk()
+    {
         $delete = $this->Surat_masuk_model->deletebulk();
-        if($delete){
+        if ($delete) {
             $this->session->set_flashdata('success', 'Delete Record Success');
-        }else{
+        } else {
             $this->session->set_flashdata('error', 'Delete Record failed');
         }
         echo $delete;
     }
-   
-    public function _rules() 
+
+    public function _rules()
     {
-	$this->form_validation->set_rules('isi_surat', 'isi surat', 'trim|required');
-	$this->form_validation->set_rules('file_surat', 'file surat', 'trim|required');
-	$this->form_validation->set_rules('jenis_surat', 'jenis surat', 'trim|required');
-	$this->form_validation->set_rules('no_surat', 'no surat', 'trim|required');
-	$this->form_validation->set_rules('tanggal_surat', 'tanggal surat', 'trim|required');
-	$this->form_validation->set_rules('tanggal_dikirim', 'tanggal dikirim', 'trim|required');
-	$this->form_validation->set_rules('tanggal_terima', 'tanggal terima', 'trim|required');
-	$this->form_validation->set_rules('jumlah_lampiran', 'jumlah lampiran', 'trim|required');
-	$this->form_validation->set_rules('pengirim', 'pengirim', 'trim|required');
-	$this->form_validation->set_rules('penerima', 'penerima', 'trim|required');
-	$this->form_validation->set_rules('perihal', 'perihal', 'trim|required');
+        $this->form_validation->set_rules('isi_surat', 'isi surat', 'trim|required');
+        // $this->form_validation->set_rules('file_surat', 'file surat', 'trim|required');
+        // $this->form_validation->set_rules('jenis_surat', 'jenis surat', 'trim|required');
+        $this->form_validation->set_rules('no_surat', 'no surat', 'trim|required');
+        $this->form_validation->set_rules('tanggal_surat', 'tanggal surat', 'trim|required');
+        // $this->form_validation->set_rules('tanggal_dikirim', 'tanggal dikirim', 'trim|required');
+        $this->form_validation->set_rules('tanggal_terima', 'tanggal terima', 'trim|required');
+        $this->form_validation->set_rules('jumlah_lampiran', 'jumlah lampiran', 'trim|required');
+        $this->form_validation->set_rules('pengirim', 'pengirim', 'trim|required');
+        $this->form_validation->set_rules('penerima', 'penerima', 'trim|required');
+        $this->form_validation->set_rules('perihal', 'perihal', 'trim|required');
 
-	$this->form_validation->set_rules('id_surat', 'id_surat', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_rules('id_surat', 'id_surat', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
-
 }
 
 /* End of file Surat_masuk.php */
