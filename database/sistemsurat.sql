@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2022 at 09:41 AM
+-- Generation Time: Jul 21, 2022 at 09:39 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -77,9 +77,6 @@ INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (1, 89),
 (1, 42),
 (1, 43),
-(1, 1),
-(3, 1),
-(5, 1),
 (1, 40),
 (1, 95),
 (5, 95),
@@ -117,7 +114,10 @@ INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (1, 112),
 (1, 113),
 (2, 113),
-(6, 113);
+(6, 113),
+(1, 1),
+(2, 1),
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -224,8 +224,11 @@ CREATE TABLE `surat` (
 
 INSERT INTO `surat` (`id_surat`, `isi_surat`, `file_surat`, `jenis_surat`, `no_surat`, `tanggal_surat`, `tanggal_dikirim`, `tanggal_terima`, `jumlah_lampiran`, `pengirim`, `penerima`, `perihal`) VALUES
 (2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat.pdf', 2, '958690688678s', '2022-07-15', '2022-07-19', '0000-00-00', 1, 'ppsdm hrhr', 'pt git', 'Wisuda'),
-(3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat8.pdf', 1, '958690688678sssxxxx', '2022-07-28', '0000-00-00', '2022-07-27', 1, 'ppsdm hrhr', 'pt git', 'Wisuda'),
-(4, 'hahahahahahahahahahahha', 'surat1.pdf', 2, 'ut58ungug5y', '2022-07-14', '2022-07-16', '0000-00-00', 1, 'ppsdm hr', 'bnn', 'tes');
+(3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat8.pdf', 1, '958690688678sssxxxx', '2022-07-28', '0000-00-00', '2022-07-27', 1, 'ppsdm hr', 'pt git', 'Wisuda'),
+(4, 'hahahahahahahahahahahha gfdg sdgs', 'surat1.pdf', 2, 'ut58ungug5y', '2022-07-14', '2022-07-16', '0000-00-00', 1, 'ppsdm hr', 'bnn', 'rapat'),
+(5, 'dbhasx saxsahxbsaxhbasxsaxjsaxsax nsaxsanxaknx', 'Surat_Rekognisi_Fajar.pdf', 1, '6834376432764', '2022-07-07', '0000-00-00', '2022-07-09', 1, 'ppsdm', 'bnn cimahi', 'rapat'),
+(7, 'asdsadasyy', 'Lembar_Pengesahan_2.docx', 1, '6834376432764rfrr', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrd', 'telkom', 'rapat besar'),
+(8, 'dcdhdh', 'Lembar_Pengesahan_21.docx', 1, '73537374848', '2022-07-19', '0000-00-00', '2022-07-21', 1, 'ppsdm hrd', 'telkom', 'kulum');
 
 -- --------------------------------------------------------
 
@@ -250,11 +253,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `password`, `email`, `active`, `first_name`, `last_name`, `phone`, `image`) VALUES
 (12, '$2y$08$gIcKdOUAjrcamqQDATEIduem.6hJXOSAy.YOcnozQMwvfJtU0LuQG', 'admin1@gmail.com', 1, 'admin', '1', '+6285158339041', 'default.jpg'),
-(13, '$2y$08$svPbFR4WLW85xta8FLion.t21zEsBfl4d34grG7K8kkBULxgXcZXq', 'fajarsomantri124@gmail.com', 1, 'fajar', 'somantri', '085158339041', 'default.jpg'),
-(14, '$2y$08$RQ0NZ3jYK4QIzCNfyI/cAuVUxqpoOuVaj5Y.F9ttMeFAwDB4ZpCTe', 'rojaksomantri12@gmail.com', 1, 'rojak', 'soman', '08951267543', 'default.jpg'),
-(15, '$2y$08$Unq.bwfwfF1fdkZMicNfuOdfBGJwFYJD0Z0kE3/Cew1QzsV0AQxvS', 'januarsomantri123@gmail.com', 1, 'januar', 'somantri', '08523423675', 'default.jpg'),
-(16, '$2y$08$GG9cB4qJ82hm1vMt/Jq8G.tWqGh2aFfkf11gXJ8y44HJZYpZL/RN2', 'febrisomantri123@gmail.com', 1, 'febri', 'somantri', '08946467464', 'default.jpg'),
-(17, '$2y$08$9ywd2wU.Ceu/MAhiwd5spesE3moJHq1LuOR1sKj05jaP4bJgNTrWu', 'akusiapa12@gmail.com', 1, 'aku', 'siapa', '089656478847', 'default.jpg');
+(18, '$2y$08$m0cOZZk.Xy2XwHFfCxacnOaxr6J4PrNiTNvjRaTUFCIbqVExxr9wO', 'fajar@poltekpos.com', 1, 'fajar', 'somantri', NULL, 'default.jpg'),
+(19, '$2y$08$.W5x3DtF5qdWeNUGtzOozu5BhOQBL1EcBczL6q5w5GpbQBriz4Kl6', 'januar12@gmail.com', 1, 'januar', 'somantri', '21098434097521', 'default.jpg'),
+(20, '$2y$08$AzInjfdAIUoc6I/5qcRe7O4xXKam.CJ/H6a1K5/F10Ry5h5YfrwD6', 'genta12@gmail.com', 1, 'genta', 'wicaksono', '123634647', 'default.jpg'),
+(21, '$2y$08$9.xYiuW7fFYuk4qBOLCjKOpyRxjEBhtCw5tH4LZM4QpluU1UBpCUe', 'mhdyoga12@gmail.com', 1, 'muhammad', 'yoga', '90754892', 'default.jpg'),
+(22, '$2y$08$aOiTHWbqaHSb.WXYeuFrX.Ji1DoEKSkSFVSCyZUbDJVA..XA661z.', 'tegar12@gmail.com', 1, 'Tegar', 'Winarto', '09807965645', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -274,11 +277,11 @@ CREATE TABLE `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (36, 12, 1),
-(37, 13, 2),
-(39, 14, 6),
-(40, 15, 2),
-(41, 16, 6),
-(42, 17, 2);
+(43, 18, 1),
+(47, 19, 2),
+(46, 20, 2),
+(48, 21, 6),
+(49, 22, 6);
 
 --
 -- Indexes for dumped tables
@@ -373,19 +376,19 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables

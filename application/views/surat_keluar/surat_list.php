@@ -73,7 +73,6 @@
                                     echo ' ';
                                     echo anchor(site_url('surat_keluar/update/' . $surat_keluar->id_surat), ' <i class="fa fa-edit"></i>', 'class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"');
                                     echo ' ';
-                                    echo anchor(site_url('surat_keluar/delete/' . $surat_keluar->id_surat), ' <i class="fa fa-trash"></i>', 'class="btn btn-xs btn-danger" onclick="javasciprt: return confirmdelete(\'surat_keluar/delete/' . $surat_keluar->id_surat . '\')"  data-toggle="tooltip" title="Delete" ');
                                     ?>
                                 </td>
                             </tr>

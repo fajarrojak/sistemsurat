@@ -129,7 +129,7 @@ class Surat_masuk extends CI_Controller
 
             if ($file_surat) {
                 $config['upload_path'] = './assets/uploads/files/surat/surat_masuk/';
-                $config['allowed_types'] = 'pdf';
+                $config['allowed_types'] = 'pdf|docx';
                 $config['max_size']     = '2048';
 
                 $this->load->library('upload', $config);
@@ -216,7 +216,7 @@ class Surat_masuk extends CI_Controller
 
             if ($file_surat) {
                 $config['upload_path'] = './assets/uploads/files/surat/surat_masuk/';
-                $config['allowed_types'] = 'pdf';
+                $config['allowed_types'] = 'pdf|docx';
                 $config['max_size']     = '2048';
 
                 $this->load->library('upload', $config);

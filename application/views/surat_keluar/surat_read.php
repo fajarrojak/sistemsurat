@@ -31,14 +31,15 @@
                         </div>
                     </div>
 
-                    <div class="row" style="margin-bottom: 10px;">
+                    <!-- <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-4">
                             <b>Tanggal terima</b>
                         </div>
                         <div class="col-md-8">
-                            <?php echo date_surat($tanggal_terima); ?>
+                            <?php 
+                            // echo date_surat($tanggal_terima); ?>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-4">

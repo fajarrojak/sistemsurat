@@ -73,7 +73,6 @@
                                     echo ' ';
                                     echo anchor(site_url('surat_masuk/update/' . $surat_masuk->id_surat), ' <i class="fa fa-edit"></i>', 'class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"');
                                     echo ' ';
-                                    echo anchor(site_url('surat_masuk/delete/' . $surat_masuk->id_surat), ' <i class="fa fa-trash"></i>', 'class="btn btn-xs btn-danger" onclick="javasciprt: return confirmdelete(\'surat_masuk/delete/' . $surat_masuk->id_surat . '\')"  data-toggle="tooltip" title="Delete" ');
                                     ?>
                                 </td>
                             </tr>

@@ -66,7 +66,7 @@
                     <label for="varchar">File Surat <?php echo form_error('file_surat') ?></label>
                     <input type="file" class="form-control" name="file_surat" id="file_surat" placeholder="File Surat" value="<?php echo $file_surat; ?>" />
                     <label for="formFile" class="form-label">
-                        File : <a class="text-light" href="<?= base_url('/assets/uploads/files/surat/surat_masuk'); ?><?php echo $file_surat; ?>"><?php echo $file_surat; ?></a>
+                        File : <a class="text-light" href="<?= base_url('/assets/uploads/files/surat/surat_masuk/'); ?><?php echo $file_surat; ?>"><?php echo $file_surat; ?></a>
                     </label>
                 </div>
 
