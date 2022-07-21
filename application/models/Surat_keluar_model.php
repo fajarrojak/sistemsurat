@@ -50,6 +50,27 @@ class Surat_keluar_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    function laporan_surat_keluar_total($q = NULL, $dari, $sampai)
+    {
+        $this->db->where('tanggal_surat >=', $dari);
+        $this->db->where('tanggal_surat <=', $sampai);
+        $this->db->from($this->table);
+        $this->db->where('jenis_surat', 2);
+
+        return $this->db->count_all_results();
+    }
+
+    // get data with limit and search
+    function laporan_surat_keluar($limit, $start = 0, $q = NULL, $dari, $sampai)
+    {
+        $this->db->where('tanggal_surat >=', $dari);
+        $this->db->where('tanggal_surat <=', $sampai);
+        $this->db->order_by($this->id, $this->order);
+        $this->db->where('jenis_surat', 2);
+        $this->db->limit($limit, $start);
+        return $this->db->get($this->table)->result();
+    }
+
     // insert data
     function insert($data)
     {

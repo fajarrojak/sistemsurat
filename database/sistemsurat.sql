@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2022 at 09:39 AM
+-- Generation Time: Jul 21, 2022 at 10:47 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -35,6 +35,15 @@ CREATE TABLE `disposisi` (
   `tanggal_disposisi` date NOT NULL,
   `pembuat_disposisi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `disposisi`
+--
+
+INSERT INTO `disposisi` (`id`, `id_surat`, `catatan_disposisi`, `penerima_disposisi`, `tanggal_disposisi`, `pembuat_disposisi`) VALUES
+(3, 8, 'jasnbdjas', 12, '2022-07-21', 18),
+(4, 7, 'kgmkgm', 21, '2022-07-21', 18),
+(5, 5, 'tolong kerjakan', 19, '2022-07-21', 18);
 
 -- --------------------------------------------------------
 
@@ -117,7 +126,9 @@ INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (6, 113),
 (1, 1),
 (2, 1),
-(6, 1);
+(6, 1),
+(1, 115),
+(1, 116);
 
 -- --------------------------------------------------------
 
@@ -157,7 +168,9 @@ INSERT INTO `menu` (`id_menu`, `sort`, `level`, `parent_id`, `icon`, `label`, `l
 (111, 2, 2, 1, 'fas fa-envelope', 'Kelola Surat Masuk', 'Surat_masuk', '#', 1),
 (112, 3, 2, 1, 'far fa-envelope-open', 'Kelola Surat Keluar', 'Surat_keluar', '#', 1),
 (113, 4, 2, 1, 'fas fa-envelope-square', 'Disposisi', 'Disposisi', '#', 1),
-(114, 5, 2, 1, 'fab fa-envira', 'View Laporan', '#', '#', 1);
+(114, 5, 2, 1, 'fab fa-envira', 'View Laporan', '#', '#', 1),
+(115, 1, 2, 114, 'fab fa-android', 'Surat Masuk', 'laporan/laporan_surat_masuk', '#', 1),
+(116, 1, 2, 114, 'fab fa-apple', 'Surat Keluar', 'laporan/laporan_surat_keluar', '#', 1);
 
 -- --------------------------------------------------------
 
@@ -346,7 +359,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -358,7 +371,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `menu_type`

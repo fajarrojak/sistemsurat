@@ -49,6 +49,26 @@ class Surat_masuk_model extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
+    function laporan_surat_masuk_total($q = NULL, $dari, $sampai)
+    {
+        $this->db->from($this->table);
+        $this->db->where('tanggal_surat >=', $dari);
+        $this->db->where('tanggal_surat <=', $sampai);
+        $this->db->where('jenis_surat', 1);
+
+        return $this->db->count_all_results();
+    }
+
+    // get data with limit and search
+    function laporan_surat_masuk($limit, $start = 0, $q = NULL, $dari, $sampai)
+    {
+        $this->db->where('tanggal_surat >=', $dari);
+        $this->db->where('tanggal_surat <=', $sampai);
+        $this->db->where('jenis_surat', 1);
+        $this->db->order_by($this->id, $this->order);
+        $this->db->limit($limit, $start);
+        return $this->db->get($this->table)->result();
+    }
 
     // insert data
     function insert($data)

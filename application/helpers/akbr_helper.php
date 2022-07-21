@@ -1,5 +1,38 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 // akbr helper
+function cek_nama($id_user)
+{
+  $ci = &get_instance();
+  $ci->load->model('users_model');
+  $user = $ci->users_model->get_by_id($id_user);
+  return $user->first_name . ' ' . $user->last_name;
+}
+
+function cek_nomor_surat($id_surat)
+{
+  $ci = &get_instance();
+  $ci->load->model('Surat_masuk_model');
+  $surat = $ci->Surat_masuk_model->get_by_id($id_surat);
+  return $surat->no_surat;
+}
+
+function cek_disposisi($id_surat)
+{
+  $ci = &get_instance();
+  $ci->db->where('id_surat', $id_surat);
+  $query = $ci->db->get('disposisi');
+  if ($query->num_rows() > 0) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+function cek_jabatan($id_user)
+{
+  $ci = &get_instance();
+  return $ci->ion_auth->get_users_groups($id_user)->row()->name;
+}
 
 function test_email()
 {

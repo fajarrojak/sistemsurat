@@ -73,6 +73,10 @@
                                     echo ' ';
                                     echo anchor(site_url('surat_masuk/update/' . $surat_masuk->id_surat), ' <i class="fa fa-edit"></i>', 'class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"');
                                     echo ' ';
+                                    if (!cek_disposisi($surat_masuk->id_surat)) {
+                                        echo anchor(site_url('surat_masuk/disposisi/' . $surat_masuk->id_surat), ' <i class="fa fa-mail">Disposisi</i>', 'class="btn btn-xs btn-warning" data-toggle="tooltip" title="Disposisi"');
+                                        echo ' ';
+                                    }
                                     ?>
                                 </td>
                             </tr>

@@ -28,29 +28,35 @@ class Disposisi_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
-    function total_rows($q = NULL) {
+    function total_rows($q = NULL)
+    {
         $this->db->like('id', $q);
-	$this->db->or_like('id_surat', $q);
-	$this->db->or_like('catatan_disposisi', $q);
-	$this->db->or_like('penerima_disposisi', $q);
-	$this->db->or_like('tanggal_disposisi', $q);
-	$this->db->or_like('pembuat_disposisi', $q);
-	$this->db->from($this->table);
+        $this->db->or_like('id_surat', $q);
+        $this->db->or_like('catatan_disposisi', $q);
+        $this->db->or_like('penerima_disposisi', $q);
+        $this->db->or_like('tanggal_disposisi', $q);
+        $this->db->or_like('pembuat_disposisi', $q);
+        $this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL) {
+    function get_limit_data($limit, $start = 0, $q = NULL)
+    {
+        $id_user = $this->session->userdata('user_id');
+        $this->db->where('penerima_disposisi', $id_user);
+        $this->db->or_where('pembuat_disposisi', $id_user);
+
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('id', $q);
-	$this->db->or_like('id_surat', $q);
-	$this->db->or_like('catatan_disposisi', $q);
-	$this->db->or_like('penerima_disposisi', $q);
-	$this->db->or_like('tanggal_disposisi', $q);
-	$this->db->or_like('pembuat_disposisi', $q);
-	$this->db->limit($limit, $start);
+        //     $this->db->like('id', $q);
+        // $this->db->or_like('id_surat', $q);
+        // $this->db->or_like('catatan_disposisi', $q);
+        // $this->db->or_like('penerima_disposisi', $q);
+        // $this->db->or_like('tanggal_disposisi', $q);
+        // $this->db->or_like('pembuat_disposisi', $q);
+        $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
@@ -75,13 +81,13 @@ class Disposisi_model extends CI_Model
     }
 
     // delete bulkdata
-    function deletebulk(){
+    function deletebulk()
+    {
         $data = $this->input->post('msg_', TRUE);
-        $arr_id = explode(",", $data); 
+        $arr_id = explode(",", $data);
         $this->db->where_in($this->id, $arr_id);
         return $this->db->delete($this->table);
     }
-
 }
 
 /* End of file Disposisi_model.php */

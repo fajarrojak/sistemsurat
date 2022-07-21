@@ -114,6 +114,44 @@ class Surat_masuk extends CI_Controller
         $this->load->view('template/backend', $data);
     }
 
+    public function disposisi($id_surat)
+    {
+        $data = array(
+            'button' => 'Create',
+            'action' => base_url('surat_masuk/disposisi_action'),
+            'id_surat' => $id_surat
+        );
+        // users
+        $data['users'] = $this->db->get('users')->result();
+        $data['title'] = 'Disposisi Surat Masuk';
+        $data['subtitle'] = '';
+        $data['crumb'] = [
+            'Kelola Surat Masuk' => '',
+        ];
+
+        $data['page'] = 'surat_masuk/disposisi_form';
+        $this->load->view('template/backend', $data);
+    }
+
+    public function disposisi_action()
+    {
+        $id_surat = $this->input->post('id_surat', TRUE);
+        $id_user = $this->input->post('kepada', TRUE);
+        $catatan_disposisi = $this->input->post('catatan_disposisi', TRUE);
+        $tanggal_disposisi = date('Y-m-d');
+        $pembuat_disposisi = $this->session->userdata('user_id');
+
+        $data = array(
+            'id_surat' => $id_surat,
+            'penerima_disposisi ' => $id_user,
+            'catatan_disposisi' => $catatan_disposisi,
+            'tanggal_disposisi' => $tanggal_disposisi,
+            'pembuat_disposisi' => $pembuat_disposisi,
+        );
+        $this->db->insert('disposisi', $data);
+        redirect('surat_masuk');
+    }
+
     public function create_action()
     {
         $this->_rules();
