@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2022 at 10:47 AM
+-- Generation Time: Aug 02, 2022 at 08:00 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -43,7 +43,10 @@ CREATE TABLE `disposisi` (
 INSERT INTO `disposisi` (`id`, `id_surat`, `catatan_disposisi`, `penerima_disposisi`, `tanggal_disposisi`, `pembuat_disposisi`) VALUES
 (3, 8, 'jasnbdjas', 12, '2022-07-21', 18),
 (4, 7, 'kgmkgm', 21, '2022-07-21', 18),
-(5, 5, 'tolong kerjakan', 19, '2022-07-21', 18);
+(5, 5, 'tolong kerjakan', 19, '2022-07-21', 18),
+(6, 9, 'gtgnhjnjkhjvnfvbh', 12, '2022-08-01', 20),
+(7, 2147483647, 'dnjsvfh fdmvnyrfnrfrnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', 0, '0000-00-00', 30),
+(8, 10, 'wisuda ', 18, '2022-08-01', 18);
 
 -- --------------------------------------------------------
 
@@ -241,7 +244,9 @@ INSERT INTO `surat` (`id_surat`, `isi_surat`, `file_surat`, `jenis_surat`, `no_s
 (4, 'hahahahahahahahahahahha gfdg sdgs', 'surat1.pdf', 2, 'ut58ungug5y', '2022-07-14', '2022-07-16', '0000-00-00', 1, 'ppsdm hr', 'bnn', 'rapat'),
 (5, 'dbhasx saxsahxbsaxhbasxsaxjsaxsax nsaxsanxaknx', 'Surat_Rekognisi_Fajar.pdf', 1, '6834376432764', '2022-07-07', '0000-00-00', '2022-07-09', 1, 'ppsdm', 'bnn cimahi', 'rapat'),
 (7, 'asdsadasyy', 'Lembar_Pengesahan_2.docx', 1, '6834376432764rfrr', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrd', 'telkom', 'rapat besar'),
-(8, 'dcdhdh', 'Lembar_Pengesahan_21.docx', 1, '73537374848', '2022-07-19', '0000-00-00', '2022-07-21', 1, 'ppsdm hrd', 'telkom', 'kulum');
+(8, 'dcdhdh', 'Lembar_Pengesahan_21.docx', 1, '73537374848', '2022-07-19', '0000-00-00', '2022-07-21', 1, 'ppsdm hrd', 'telkom', 'kulum'),
+(9, 'yghouhuihou', 'Berita_Acara_Fajar.docx', 1, '6756754654', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrdt', 'bnn cimahi', 'rapat besar'),
+(10, 'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjrferjhfrhejfrhevfregvcergcv', 'sistematika_pkl.docx', 1, '8949373874387', '2022-08-10', '0000-00-00', '2022-08-11', 1, 'ppsdm it', 'telkom', 'wisuda');
 
 -- --------------------------------------------------------
 
@@ -359,7 +364,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -389,7 +394,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
