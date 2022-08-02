@@ -53,7 +53,8 @@
               <input type="text" class="form-control formdate" name="sampai" id="SampaiTanggal" required="true" placeholder="Sampai Tanggal">
             </div>
             <div class="col input-group">
-              <button type="submit" class="btn btn-primary"> <i class="fas fa-check-circle"></i> Submit</button>
+              <button type="submit" class="btn btn-primary" style="margin-right:5px ;"> <i class="fas fa-check-circle"></i> Submit</button>
+              <a href="<?= base_url('laporan/laporan_sm_print'); ?>" class="btn btn-success"> <i class="fas fa-file-alt"></i> Excel</a>
             </div>
           </form>
         </div>

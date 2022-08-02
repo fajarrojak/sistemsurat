@@ -12,6 +12,120 @@ class Laporan extends CI_Controller
     $this->load->library('form_validation');
   }
 
+  public function laporan_sk_print()
+  {
+    $datareport = $this->Surat_keluar_model->get_limit_data_print();
+
+    $header = [
+      'No',
+      'Nomor Surat',
+      'Perihal',
+      'Pengirim',
+      'Tanggal Surat'
+    ];
+
+    $this->load->helper('exportexcel');
+    $namaFile = "laporan.xls";
+    // $judul = "groups";
+    $tablehead = 0;
+    $tablebody = 1;
+    $nourut = 1;
+    //penulisan header
+    header("Pragma: public");
+    header("Expires: 0");
+    header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+    header("Content-Type: application/force-download");
+    header("Content-Type: application/octet-stream");
+    header("Content-Type: application/download");
+    header("Content-Disposition: attachment;filename=" . $namaFile . "");
+    header("Content-Transfer-Encoding: binary ");
+
+    xlsBOF();
+
+    $kolomhead = 0;
+    foreach ($header as $kolom) {
+      xlsWriteLabel($tablehead, $kolomhead++, $kolom);
+    }
+
+    foreach ($datareport as $data) {
+      $kolombody = 0;
+
+      //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+      xlsWriteNumber($tablebody, $kolombody++, $nourut);
+      xlsWriteLabel($tablebody, $kolombody++, $data->no_surat);
+      xlsWriteLabel($tablebody, $kolombody++, $data->perihal);
+      xlsWriteNumber($tablebody, $kolombody++, $data->pengirim);
+      xlsWriteLabel($tablebody, $kolombody++, $data->tanggal_surat);
+
+      // }
+      // xlsWriteLabel($tablebody, $kolombody++, $data->$value);
+      // }
+
+      $tablebody++;
+      $nourut++;
+    }
+
+    xlsEOF();
+    exit();
+  }
+
+  public function laporan_sm_print()
+  {
+    $datareport = $this->Surat_masuk_model->get_limit_data_print();
+
+    $header = [
+      'No',
+      'Nomor Surat',
+      'Perihal',
+      'Pengirim',
+      'Tanggal Surat'
+    ];
+
+    $this->load->helper('exportexcel');
+    $namaFile = "laporan.xls";
+    // $judul = "groups";
+    $tablehead = 0;
+    $tablebody = 1;
+    $nourut = 1;
+    //penulisan header
+    header("Pragma: public");
+    header("Expires: 0");
+    header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+    header("Content-Type: application/force-download");
+    header("Content-Type: application/octet-stream");
+    header("Content-Type: application/download");
+    header("Content-Disposition: attachment;filename=" . $namaFile . "");
+    header("Content-Transfer-Encoding: binary ");
+
+    xlsBOF();
+
+    $kolomhead = 0;
+    foreach ($header as $kolom) {
+      xlsWriteLabel($tablehead, $kolomhead++, $kolom);
+    }
+
+    foreach ($datareport as $data) {
+      $kolombody = 0;
+
+      //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
+      xlsWriteNumber($tablebody, $kolombody++, $nourut);
+      xlsWriteLabel($tablebody, $kolombody++, $data->no_surat);
+      xlsWriteLabel($tablebody, $kolombody++, $data->perihal);
+      xlsWriteNumber($tablebody, $kolombody++, $data->pengirim);
+      xlsWriteLabel($tablebody, $kolombody++, $data->tanggal_surat);
+
+      // }
+      // xlsWriteLabel($tablebody, $kolombody++, $data->$value);
+      // }
+
+      $tablebody++;
+      $nourut++;
+    }
+
+    xlsEOF();
+    exit();
+  }
+
   public function laporan_surat_masuk()
   {
     $q = urldecode($this->input->get('q', TRUE));
