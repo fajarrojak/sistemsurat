@@ -22,7 +22,7 @@ class Users extends CI_Controller
         $this->lang->load('auth');
     }
 
-    public function index()
+    public function index() // tampil data user
     {
         // set the flash data error message if there is one
         $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -88,7 +88,7 @@ class Users extends CI_Controller
         }
     }
 
-    public function create()
+    public function create() // tambah user
     {
         $data = array(
             'button' => 'Create',
@@ -153,7 +153,7 @@ class Users extends CI_Controller
         }
     }
 
-    public function update($id)
+    public function update($id) // ubah user
     {
         $row = $this->Users_model->get_by_id($id);
 
@@ -225,7 +225,7 @@ class Users extends CI_Controller
         }
     }
 
-    public function delete($id)
+    public function delete($id) // hapus user
     {
         $row = $this->Users_model->get_by_id($id);
 

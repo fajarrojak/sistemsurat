@@ -15,7 +15,7 @@ class Surat_masuk extends CI_Controller
         $this->load->library('form_validation');
     }
 
-    public function index()
+    public function index() // list surat masuk
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -53,7 +53,7 @@ class Surat_masuk extends CI_Controller
         $this->load->view('template/backend', $data);
     }
 
-    public function read($id)
+    public function read($id) // lihat surat masuk
     {
         $row = $this->Surat_masuk_model->get_by_id($id);
         if ($row) {
@@ -85,7 +85,7 @@ class Surat_masuk extends CI_Controller
         }
     }
 
-    public function create()
+    public function create() // tambah surat masuk
     {
 
         $data = array(
@@ -114,7 +114,7 @@ class Surat_masuk extends CI_Controller
         $this->load->view('template/backend', $data);
     }
 
-    public function disposisi($id_surat)
+    public function disposisi($id_surat) // disposisi surat
     {
         $data = array(
             'button' => 'Create',
@@ -202,7 +202,7 @@ class Surat_masuk extends CI_Controller
         }
     }
 
-    public function update($id)
+    public function update($id) // edit surat masuk
     {
         $row = $this->Surat_masuk_model->get_by_id($id);
 
@@ -291,30 +291,6 @@ class Surat_masuk extends CI_Controller
         }
     }
 
-    public function delete($id)
-    {
-        $row = $this->Surat_masuk_model->get_by_id($id);
-
-        if ($row) {
-            $this->Surat_masuk_model->delete($id);
-            $this->session->set_flashdata('success', 'Delete Record Success');
-            redirect(site_url('surat_masuk'));
-        } else {
-            $this->session->set_flashdata('error', 'Record Not Found');
-            redirect(site_url('surat_masuk'));
-        }
-    }
-
-    public function deletebulk()
-    {
-        $delete = $this->Surat_masuk_model->deletebulk();
-        if ($delete) {
-            $this->session->set_flashdata('success', 'Delete Record Success');
-        } else {
-            $this->session->set_flashdata('error', 'Delete Record failed');
-        }
-        echo $delete;
-    }
 
     public function _rules()
     {
