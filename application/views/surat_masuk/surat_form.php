@@ -51,7 +51,8 @@
                         </div>
                         <div class="col-md-6">
                             <label for="varchar">Penerima <?php echo form_error('penerima') ?></label>
-                            <input type="text" class="form-control" name="penerima" id="penerima" placeholder="Penerima" value="<?php echo $penerima; ?>" />
+                            <input type="text" class="form-control" placeholder="<?php echo $list_user->nama; ?>" disabled />
+                            <input type="hidden" class="form-control" name="penerima" id="penerima" placeholder="Penerima" value="<?php echo $list_user->id; ?>" />
                         </div>
                     </div>
 

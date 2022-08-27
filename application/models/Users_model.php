@@ -15,6 +15,16 @@ class Users_model extends CI_Model
         parent::__construct();
     }
 
+    function get_user_surat($id = null)
+    {
+        if ($id != null) {
+            $user = $this->db->query("SELECT u.id,concat(u.first_name,' ',u.last_name) as nama,g.name as hak_akses FROM users u join users_groups ug on (u.id=ug.user_id) join groups g on (ug.group_id=g.id) WHERE u.id='$id'")->row();
+        } else {
+            $user = $this->db->query("SELECT concat(u.first_name,' ',u.last_name) as nama,g.name as hak_akses FROM users u join users_groups ug on (u.id=ug.user_id) join groups g on (ug.group_id=g.id)")->result();
+        }
+        return $user;
+    }
+
     // datatables
     function json()
     {

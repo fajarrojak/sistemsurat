@@ -14,7 +14,7 @@
             <div class="box-body">
                 <div class="row" style="margin-bottom: 10px">
                     <div class="col-md-4">
-                        <?php echo anchor(site_url('disposisi/create'), '<i class="fa fa-plus"></i> Create', 'class="btn bg-purple"'); ?>
+                        <!-- <?php echo anchor(site_url('disposisi/create'), '<i class="fa fa-plus"></i> Create', 'class="btn bg-purple"'); ?> -->
                     </div>
                     <div class="col-md-4 text-center">
                         <div style="margin-top: 8px" id="message">
@@ -44,7 +44,7 @@
                 <form method="post" action="<?= site_url('disposisi/deletebulk'); ?>" id="formbulk">
                     <table class="table table-bordered" style="margin-bottom: 10px" style="width:100%">
                         <tr>
-                            <th style="width: 10px;"><input type="checkbox" name="selectall" /></th>
+                            <!-- <th style="width: 10px;"><input type="checkbox" name="selectall" /></th> -->
                             <th>No</th>
                             <th>Nomor Surat</th>
                             <th>Catatan Disposisi</th>
@@ -56,7 +56,7 @@
                                 ?>
                             <tr>
 
-                                <td style="width: 10px;padding-left: 8px;"><input type="checkbox" name="id" value="<?= $disposisi->id; ?>" />&nbsp;</td>
+                                <!-- <td style="width: 10px;padding-left: 8px;"><input type="checkbox" name="id" value="<?= $disposisi->id; ?>" />&nbsp;</td> -->
 
                                 <td width="80px"><?php echo ++$start ?></td>
                                 <td><a href="<?= base_url('surat_masuk/read/' . $disposisi->id_surat); ?>"><?php echo cek_nomor_surat($disposisi->id_surat) ?></a></td>
@@ -71,7 +71,8 @@
                     </table>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-12">
-                            <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> Hapus Data Terpilih</button> <a href="#" class="btn bg-yellow">Total Record : <?php echo $total_rows ?></a>
+                            <!-- <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> Hapus Data Terpilih</button>  -->
+                            <a href="#" class="btn bg-yellow">Total Record : <?php echo $total_rows ?></a>
                         </div>
                     </div>
                 </form>

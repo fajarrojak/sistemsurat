@@ -104,6 +104,10 @@ class Surat_masuk extends CI_Controller
             'penerima' => set_value('penerima'),
             'perihal' => set_value('perihal'),
         );
+        $this->load->model('Users_model');
+        $id_user = $this->session->userdata('user_id');
+        $data['list_user']  = $this->Users_model->get_user_surat($id_user);
+
         $data['title'] = 'Kelola Surat Masuk';
         $data['subtitle'] = '';
         $data['crumb'] = [

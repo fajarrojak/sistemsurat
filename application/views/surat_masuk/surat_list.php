@@ -66,7 +66,7 @@
                                 <td><?php echo $surat_masuk->no_surat ?></td>
                                 <td><?php echo date_surat($surat_masuk->tanggal_surat) ?></td>
                                 <td><?php echo date_surat($surat_masuk->tanggal_terima) ?></td>
-                                <td><?php echo $surat_masuk->penerima ?></td>
+                                <td><?php echo cek_nama($surat_masuk->penerima) ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php
                                     echo anchor(site_url('surat_masuk/read/' . $surat_masuk->id_surat), '<i class="fa fa-search"></i>', 'class="btn btn-xs btn-primary"  data-toggle="tooltip" title="Detail"');

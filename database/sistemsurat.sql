@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2022 at 05:26 AM
+-- Generation Time: Aug 27, 2022 at 06:19 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -47,9 +47,8 @@ INSERT INTO `disposisi` (`id`, `id_surat`, `catatan_disposisi`, `penerima_dispos
 (6, 9, 'gtgnhjnjkhjvnfvbh', 12, '2022-08-01', 20),
 (7, 2147483647, 'dnjsvfh fdmvnyrfnrfrnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', 0, '0000-00-00', 30),
 (8, 10, 'wisuda ', 18, '2022-08-01', 18),
-(9, 14, 'ffrgreger', 18, '2022-08-23', 18),
-(10, 12, '', 12, '2022-08-23', 18),
-(11, 20, 'tdhcgf', 19, '2022-08-24', 18);
+(9, 11, 'yo', 19, '2022-08-27', 18),
+(10, 3, 'kerjakan', 20, '2022-08-27', 18);
 
 -- --------------------------------------------------------
 
@@ -70,7 +69,8 @@ CREATE TABLE `groups` (
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'kapus', 'Kepala pusat'),
 (2, 'koordinator', 'koordinator'),
-(6, 'subkoordinator', 'subkoordinator');
+(6, 'subkoordinator', 'subkoordinator'),
+(7, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -90,8 +90,6 @@ CREATE TABLE `groups_menu` (
 INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (1, 8),
 (1, 89),
-(1, 42),
-(1, 43),
 (1, 40),
 (1, 95),
 (5, 95),
@@ -115,12 +113,6 @@ INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (2, 4),
 (3, 4),
 (5, 4),
-(1, 3),
-(2, 3),
-(3, 3),
-(1, 92),
-(2, 92),
-(1, 44),
 (0, 110),
 (1, 114),
 (1, 111),
@@ -130,12 +122,20 @@ INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (1, 113),
 (2, 113),
 (6, 113),
+(1, 115),
+(1, 116),
 (1, 1),
 (2, 1),
 (6, 1),
-(1, 115),
-(1, 116),
-(0, 117);
+(7, 1),
+(1, 3),
+(2, 3),
+(7, 3),
+(7, 42),
+(7, 43),
+(7, 44),
+(2, 92),
+(7, 92);
 
 -- --------------------------------------------------------
 
@@ -164,21 +164,20 @@ INSERT INTO `menu` (`id_menu`, `sort`, `level`, `parent_id`, `icon`, `label`, `l
 (3, 1, 2, 1, 'fas fa-tachometer-alt', 'Dashboard', 'dashboard', '#', 1),
 (4, 15, 3, 40, 'fas fa-table', 'CRUD Generator', 'crudbuilder', '1', 1),
 (8, 14, 3, 40, 'fas fa-bars', 'Menu', 'cms/menu/side-menu', 'navMenu', 1),
-(40, 13, 2, 117, 'empty', 'DEV', '#', '#', 1),
+(40, 13, 2, 110, 'empty', 'DEV', '#', '#', 1),
 (42, 9, 2, 92, 'fas fa-users-cog', 'User', '#', '1', 1),
 (43, 10, 3, 42, 'fas fa-angle-double-right', 'Users', 'users', '1', 1),
 (44, 11, 3, 42, 'fas fa-angle-double-right', 'Hak akses', 'groups', '2', 1),
-(89, 17, 2, 110, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
+(89, 16, 2, 110, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
 (92, 8, 1, 0, 'empty', 'MASTER DATA', '#', 'masterdata', 1),
-(107, 18, 2, 110, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
-(110, 16, 1, 0, 'fab fa-500px', 'Hidden', '#', '#', 1),
+(107, 17, 2, 110, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
+(110, 12, 1, 0, 'fab fa-500px', 'Hidden', '#', '#', 1),
 (111, 2, 2, 1, 'fas fa-envelope', 'Kelola Surat Masuk', 'Surat_masuk', '#', 1),
 (112, 3, 2, 1, 'far fa-envelope-open', 'Kelola Surat Keluar', 'Surat_keluar', '#', 1),
 (113, 4, 2, 1, 'fas fa-envelope-square', 'Disposisi', 'Disposisi', '#', 1),
 (114, 5, 2, 1, 'fab fa-envira', 'View Laporan', '#', '#', 1),
 (115, 6, 3, 114, 'fab fa-android', 'Surat Masuk', 'laporan/laporan_surat_masuk', '#', 1),
-(116, 7, 3, 114, 'fab fa-apple', 'Surat Keluar', 'laporan/laporan_surat_keluar', '#', 1),
-(117, 12, 1, 0, 'fas fa-air-freshener', 'Hidden', '#', '#', 1);
+(116, 7, 3, 114, 'fab fa-apple', 'Surat Keluar', 'laporan/laporan_surat_keluar', '#', 1);
 
 -- --------------------------------------------------------
 
@@ -244,24 +243,15 @@ CREATE TABLE `surat` (
 --
 
 INSERT INTO `surat` (`id_surat`, `isi_surat`, `file_surat`, `jenis_surat`, `no_surat`, `tanggal_surat`, `tanggal_dikirim`, `tanggal_terima`, `jumlah_lampiran`, `pengirim`, `penerima`, `perihal`) VALUES
-(2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat.pdf', 2, '958690688678s', '2022-07-15', '2022-07-19', '0000-00-00', 1, 'ppsdm hrhr', 'pt git', 'Wisuda'),
-(3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat8.pdf', 1, '958690688678sssxxxx', '2022-07-28', '0000-00-00', '2022-07-27', 1, 'ppsdm hr', 'pt git', 'Wisuda'),
-(4, 'hahahahahahahahahahahha gfdg sdgs', 'surat1.pdf', 2, 'ut58ungug5y', '2022-07-14', '2022-07-16', '0000-00-00', 1, 'ppsdm hr', 'bnn', 'rapat'),
-(5, 'dbhasx saxsahxbsaxhbasxsaxjsaxsax nsaxsanxaknx', 'Surat_Rekognisi_Fajar.pdf', 1, '6834376432764', '2022-07-07', '0000-00-00', '2022-07-09', 1, 'ppsdm', 'bnn cimahi', 'rapat'),
-(7, 'asdsadasyy', 'Lembar_Pengesahan_2.docx', 1, '6834376432764rfrr', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrd', 'telkom', 'rapat besar'),
-(8, 'dcdhdh', 'Lembar_Pengesahan_21.docx', 1, '73537374848', '2022-07-19', '0000-00-00', '2022-07-21', 1, 'ppsdm hrd', 'telkom', 'kulum'),
-(9, 'yghouhuihou', 'Berita_Acara_Fajar.docx', 1, '6756754654', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrdt', 'bnn cimahi', 'rapat besar'),
-(10, 'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjrferjhfrhejfrhevfregvcergcv', 'sistematika_pkl.docx', 1, '8949373874387', '2022-08-10', '0000-00-00', '2022-08-11', 1, 'ppsdm it', 'telkom', 'wisuda'),
-(11, 'kegiatan besar', 'Buku_Kegiatan_TA_2022_(1).docx', 1, '7464764676742', '2022-08-23', '0000-00-00', '2022-08-24', 1, 'ppsdm', 'sctv', 'Kegiatan'),
-(12, 'kegiatan besar', 'Buku_Kegiatan_TA_2022_(1)1.docx', 1, '7464764676742', '2022-08-23', '0000-00-00', '2022-08-24', 1, 'ppsdm', 'sctv', 'Kegiatan'),
-(13, 'jdjadhbahdbadhbsahgsaxbsax asxsaxsavxashxgvsagxvsagxvsax', 'FORM_PERSYARATAN_TA_2022.docx', 2, '72363456327543265326', '2022-08-22', '2022-08-23', '0000-00-00', 1, 'ppsdm', 'PT git', 'rapat besar'),
-(14, 'zsxdfghnjkmedrtfgyhujksedrftgyhjdfghj', 'sistematika_pkl1.docx', 1, '84574854756437', '2022-08-22', '0000-00-00', '2022-08-23', 1, 'ppsdm hr', 'poltekpos', 'HUT'),
-(15, 'ghfftjjhjghgfdfxdxfgchmncnguj,fjyhmkifm', 'Buku_Kegiatan_TA_2022.docx', 1, '547564565877656', '2022-08-23', '0000-00-00', '2022-08-24', 1, 'ppsdm', 'poltekpos', 'hjghgh'),
-(16, 'drftyguhijokodcfghbjnkml,cfgvhbjnkml,cffgvhbjnkm', 'Buku_Kegiatan_TA_2022_(1).docx', 2, '5646787654323445', '2022-08-24', '2022-08-25', '0000-00-00', 1, 'ppsdm', 'bnn cimahi', 'jbknbh'),
-(17, 'zsdxfcghbhjnkml,;.cdfghbjnkml,', 'Buku_Kegiatan_TA_2022.docx', 2, '456789837365', '2022-08-24', '2022-08-24', '0000-00-00', 1, 'ppsdm', 'dxfcgvhbjnk', 'rtyvgdahjk'),
-(18, 'zsdfcgvhbjnkmsedrtfyguhijk', 'FORM_PERSYARATAN_TA_20221.docx', 2, '34567897890', '2022-08-10', '2022-08-19', '0000-00-00', 1, 'ppsdm', 'defgvhbhjk', 'sdfcghhjk'),
-(19, 'dfcgvhbjnkmdcfvgbhjkmvghbjk', 'Buku_Kegiatan_TA_20221.docx', 2, '2345678900987', '2022-08-25', '2022-08-26', '0000-00-00', 1, 'ppsdm', 'poltekpos', 'rapat besar'),
-(20, 'uyweguyfefgyuefeyfewugfeufeui', 'Buku_Kegiatan_TA_2022_(1)11.docx', 1, '2335656876655', '2022-08-24', '0000-00-00', '2022-08-25', 1, 'ppsdm', 'poltekpos', 'rapat');
+(2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat.pdf', 2, '958690688678s', '2022-07-15', '2022-07-19', '0000-00-00', 1, 'ppsdm hrhr', '18', 'Wisuda'),
+(3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, ullam fuga! Provident dolorum quisquam placeat expedita distinctio reprehenderit pariatur minima architecto? Libero consequatur fuga nostrum magnam praesentium facilis quam harum.\r\nVel doloremque, consequuntur ipsam labore corporis deserunt hic delectus molestias velit eveniet nobis, error laboriosam voluptatibus officiis inventore maiores corrupti perferendis earum ex veniam aspernatur cum, saepe aut quisquam! Qui.\r\nTemporibus quibusdam eligendi voluptatibus officia exercitationem tempore asperiores esse consectetur, soluta obcaecati nulla ex quam ratione eveniet laudantium totam dignissimos a natus ut corporis vel quos error. Aliquam, sapiente enim!\r\nAperiam quisquam, ut inventore accusantium totam officiis maxime blanditiis impedit voluptates repudiandae doloremque fugiat corporis nostrum atque et rem at adipisci esse animi itaque est aspernatur porro iste odio? Quibusdam?\r\nEos recusandae ex asperiores ratione molestiae illum reiciendis architecto aliquam perspiciatis aut facilis, sapiente cupiditate accusamus, libero cum natus sunt dolorem autem. Ab maiores, quasi omnis maxime mollitia doloremque. Deleniti?\r\nAb harum cum qui aut consequatur commodi, aliquid accusantium, quidem minima libero ullam a dignissimos iusto debitis enim expedita saepe quaerat perspiciatis voluptas natus beatae esse ut dolor! Illo, neque?\r\nQuidem quo eum, nostrum veniam doloribus sed ut! Nostrum ut vitae, eveniet qui asperiores accusantium quaerat provident fuga eligendi eius natus voluptas aliquid repellat, rem odit cum. At, veritatis id.\r\nPerferendis dicta neque sequi nobis aliquam modi, maiores culpa aut rerum a non? Nihil, consequatur quod odit mollitia iure optio maxime sequi rem voluptate, asperiores provident exercitationem quibusdam, esse eos.\r\nOmnis dolores in doloribus iste cumque iure quas odit non, optio fuga enim quae labore quos sit molestiae officia animi illum! Nulla quisquam consequatur minus adipisci autem dolorem harum non!\r\nVelit totam, iusto repudiandae molestias perferendis deleniti amet soluta atque numquam dolorem ea ullam doloribus magni consequuntur nam ab illo. Veritatis natus, nemo sapiente dolorem dolor quia fugiat culpa eius.', 'surat8.pdf', 1, '958690688678sssxxxx', '2022-07-28', '0000-00-00', '2022-07-27', 1, 'ppsdm hr', '18', 'Wisuda'),
+(4, 'hahahahahahahahahahahha gfdg sdgs', 'surat1.pdf', 2, 'ut58ungug5y', '2022-07-14', '2022-07-16', '0000-00-00', 1, 'ppsdm hr', '18', 'rapat'),
+(5, 'dbhasx saxsahxbsaxhbasxsaxjsaxsax nsaxsanxaknx', 'Surat_Rekognisi_Fajar.pdf', 1, '6834376432764', '2022-07-07', '0000-00-00', '2022-07-09', 1, 'ppsdm', '18', 'rapat'),
+(7, 'asdsadasyy', 'Lembar_Pengesahan_2.docx', 1, '6834376432764rfrr', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrd', '18', 'rapat besar'),
+(8, 'dcdhdh', 'Lembar_Pengesahan_21.docx', 1, '73537374848', '2022-07-19', '0000-00-00', '2022-07-21', 1, 'ppsdm hrd', '18', 'kulum'),
+(9, 'yghouhuihou', 'Berita_Acara_Fajar.docx', 1, '6756754654', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrdt', '18', 'rapat besar'),
+(10, 'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjrferjhfrhejfrhevfregvcergcv', 'sistematika_pkl.docx', 1, '8949373874387', '2022-08-10', '0000-00-00', '2022-08-11', 1, 'ppsdm it', '18', 'wisuda'),
+(11, 'sadasdasd', 'Kabareskrim_Agus.pdf', 1, '888888898', '2022-08-11', '0000-00-00', '2022-08-27', 1, 'kominfo', '18', 'asdsad');
 
 -- --------------------------------------------------------
 
@@ -290,7 +280,8 @@ INSERT INTO `users` (`id`, `password`, `email`, `active`, `first_name`, `last_na
 (19, '$2y$08$.W5x3DtF5qdWeNUGtzOozu5BhOQBL1EcBczL6q5w5GpbQBriz4Kl6', 'januar12@gmail.com', 1, 'januar', 'somantri', '21098434097521', 'default.jpg'),
 (20, '$2y$08$AzInjfdAIUoc6I/5qcRe7O4xXKam.CJ/H6a1K5/F10Ry5h5YfrwD6', 'genta12@gmail.com', 1, 'genta', 'wicaksono', '123634647', 'default.jpg'),
 (21, '$2y$08$9.xYiuW7fFYuk4qBOLCjKOpyRxjEBhtCw5tH4LZM4QpluU1UBpCUe', 'mhdyoga12@gmail.com', 1, 'muhammad', 'yoga', '90754892', 'default.jpg'),
-(22, '$2y$08$aOiTHWbqaHSb.WXYeuFrX.Ji1DoEKSkSFVSCyZUbDJVA..XA661z.', 'tegar12@gmail.com', 1, 'Tegar', 'Winarto', '09807965645', 'default.jpg');
+(22, '$2y$08$aOiTHWbqaHSb.WXYeuFrX.Ji1DoEKSkSFVSCyZUbDJVA..XA661z.', 'tegar12@gmail.com', 1, 'Tegar', 'Winarto', '09807965645', 'default.jpg'),
+(23, '$2y$08$68GWjECAD02LtWW2mgIhOuVR1Sf72yv.sl.p3s8iT9EyBWld96QSK', 'admin@gmail.com', 1, 'admin', 'admin', '09090', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -314,7 +305,8 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (47, 19, 2),
 (46, 20, 2),
 (48, 21, 6),
-(49, 22, 6);
+(49, 22, 6),
+(50, 23, 7);
 
 --
 -- Indexes for dumped tables
@@ -379,19 +371,19 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `menu_type`
@@ -409,19 +401,19 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables

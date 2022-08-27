@@ -47,7 +47,7 @@ class Disposisi_model extends CI_Model
     {
         $id_user = $this->session->userdata('user_id');
         $this->db->where('penerima_disposisi', $id_user);
-        $this->db->or_where('pembuat_disposisi', $id_user);
+        // $this->db->or_where('pembuat_disposisi', $id_user);
 
         $this->db->order_by($this->id, $this->order);
         //     $this->db->like('id', $q);
