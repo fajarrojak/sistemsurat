@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2022 at 08:00 AM
+-- Generation Time: Aug 27, 2022 at 05:26 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -46,7 +46,10 @@ INSERT INTO `disposisi` (`id`, `id_surat`, `catatan_disposisi`, `penerima_dispos
 (5, 5, 'tolong kerjakan', 19, '2022-07-21', 18),
 (6, 9, 'gtgnhjnjkhjvnfvbh', 12, '2022-08-01', 20),
 (7, 2147483647, 'dnjsvfh fdmvnyrfnrfrnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', 0, '0000-00-00', 30),
-(8, 10, 'wisuda ', 18, '2022-08-01', 18);
+(8, 10, 'wisuda ', 18, '2022-08-01', 18),
+(9, 14, 'ffrgreger', 18, '2022-08-23', 18),
+(10, 12, '', 12, '2022-08-23', 18),
+(11, 20, 'tdhcgf', 19, '2022-08-24', 18);
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,8 @@ INSERT INTO `groups_menu` (`id_groups`, `id_menu`) VALUES
 (2, 1),
 (6, 1),
 (1, 115),
-(1, 116);
+(1, 116),
+(0, 117);
 
 -- --------------------------------------------------------
 
@@ -158,22 +162,23 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id_menu`, `sort`, `level`, `parent_id`, `icon`, `label`, `link`, `id`, `id_menu_type`) VALUES
 (1, 0, 1, 0, 'empty', 'MAIN NAVIGATION', '#', '#', 1),
 (3, 1, 2, 1, 'fas fa-tachometer-alt', 'Dashboard', 'dashboard', '#', 1),
-(4, 13, 2, 40, 'fas fa-table', 'CRUD Generator', 'crudbuilder', '1', 1),
-(8, 12, 2, 40, 'fas fa-bars', 'Menu', 'cms/menu/side-menu', 'navMenu', 1),
-(40, 11, 1, 0, 'empty', 'DEV', '#', '#', 1),
-(42, 8, 2, 92, 'fas fa-users-cog', 'User', '#', '1', 1),
-(43, 9, 3, 42, 'fas fa-angle-double-right', 'Users', 'users', '1', 1),
-(44, 10, 3, 42, 'fas fa-angle-double-right', 'Hak akses', 'groups', '2', 1),
-(89, 15, 2, 110, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
-(92, 6, 1, 0, 'empty', 'MASTER DATA', '#', 'masterdata', 1),
-(107, 16, 2, 110, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
-(110, 14, 1, 0, 'fab fa-500px', 'Hidden', '#', '#', 1),
+(4, 15, 3, 40, 'fas fa-table', 'CRUD Generator', 'crudbuilder', '1', 1),
+(8, 14, 3, 40, 'fas fa-bars', 'Menu', 'cms/menu/side-menu', 'navMenu', 1),
+(40, 13, 2, 117, 'empty', 'DEV', '#', '#', 1),
+(42, 9, 2, 92, 'fas fa-users-cog', 'User', '#', '1', 1),
+(43, 10, 3, 42, 'fas fa-angle-double-right', 'Users', 'users', '1', 1),
+(44, 11, 3, 42, 'fas fa-angle-double-right', 'Hak akses', 'groups', '2', 1),
+(89, 17, 2, 110, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
+(92, 8, 1, 0, 'empty', 'MASTER DATA', '#', 'masterdata', 1),
+(107, 18, 2, 110, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
+(110, 16, 1, 0, 'fab fa-500px', 'Hidden', '#', '#', 1),
 (111, 2, 2, 1, 'fas fa-envelope', 'Kelola Surat Masuk', 'Surat_masuk', '#', 1),
 (112, 3, 2, 1, 'far fa-envelope-open', 'Kelola Surat Keluar', 'Surat_keluar', '#', 1),
 (113, 4, 2, 1, 'fas fa-envelope-square', 'Disposisi', 'Disposisi', '#', 1),
 (114, 5, 2, 1, 'fab fa-envira', 'View Laporan', '#', '#', 1),
-(115, 1, 2, 114, 'fab fa-android', 'Surat Masuk', 'laporan/laporan_surat_masuk', '#', 1),
-(116, 1, 2, 114, 'fab fa-apple', 'Surat Keluar', 'laporan/laporan_surat_keluar', '#', 1);
+(115, 6, 3, 114, 'fab fa-android', 'Surat Masuk', 'laporan/laporan_surat_masuk', '#', 1),
+(116, 7, 3, 114, 'fab fa-apple', 'Surat Keluar', 'laporan/laporan_surat_keluar', '#', 1),
+(117, 12, 1, 0, 'fas fa-air-freshener', 'Hidden', '#', '#', 1);
 
 -- --------------------------------------------------------
 
@@ -246,7 +251,17 @@ INSERT INTO `surat` (`id_surat`, `isi_surat`, `file_surat`, `jenis_surat`, `no_s
 (7, 'asdsadasyy', 'Lembar_Pengesahan_2.docx', 1, '6834376432764rfrr', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrd', 'telkom', 'rapat besar'),
 (8, 'dcdhdh', 'Lembar_Pengesahan_21.docx', 1, '73537374848', '2022-07-19', '0000-00-00', '2022-07-21', 1, 'ppsdm hrd', 'telkom', 'kulum'),
 (9, 'yghouhuihou', 'Berita_Acara_Fajar.docx', 1, '6756754654', '2022-07-14', '0000-00-00', '2022-07-15', 1, 'ppsdm hrdt', 'bnn cimahi', 'rapat besar'),
-(10, 'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjrferjhfrhejfrhevfregvcergcv', 'sistematika_pkl.docx', 1, '8949373874387', '2022-08-10', '0000-00-00', '2022-08-11', 1, 'ppsdm it', 'telkom', 'wisuda');
+(10, 'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnjrferjhfrhejfrhevfregvcergcv', 'sistematika_pkl.docx', 1, '8949373874387', '2022-08-10', '0000-00-00', '2022-08-11', 1, 'ppsdm it', 'telkom', 'wisuda'),
+(11, 'kegiatan besar', 'Buku_Kegiatan_TA_2022_(1).docx', 1, '7464764676742', '2022-08-23', '0000-00-00', '2022-08-24', 1, 'ppsdm', 'sctv', 'Kegiatan'),
+(12, 'kegiatan besar', 'Buku_Kegiatan_TA_2022_(1)1.docx', 1, '7464764676742', '2022-08-23', '0000-00-00', '2022-08-24', 1, 'ppsdm', 'sctv', 'Kegiatan'),
+(13, 'jdjadhbahdbadhbsahgsaxbsax asxsaxsavxashxgvsagxvsagxvsax', 'FORM_PERSYARATAN_TA_2022.docx', 2, '72363456327543265326', '2022-08-22', '2022-08-23', '0000-00-00', 1, 'ppsdm', 'PT git', 'rapat besar'),
+(14, 'zsxdfghnjkmedrtfgyhujksedrftgyhjdfghj', 'sistematika_pkl1.docx', 1, '84574854756437', '2022-08-22', '0000-00-00', '2022-08-23', 1, 'ppsdm hr', 'poltekpos', 'HUT'),
+(15, 'ghfftjjhjghgfdfxdxfgchmncnguj,fjyhmkifm', 'Buku_Kegiatan_TA_2022.docx', 1, '547564565877656', '2022-08-23', '0000-00-00', '2022-08-24', 1, 'ppsdm', 'poltekpos', 'hjghgh'),
+(16, 'drftyguhijokodcfghbjnkml,cfgvhbjnkml,cffgvhbjnkm', 'Buku_Kegiatan_TA_2022_(1).docx', 2, '5646787654323445', '2022-08-24', '2022-08-25', '0000-00-00', 1, 'ppsdm', 'bnn cimahi', 'jbknbh'),
+(17, 'zsdxfcghbhjnkml,;.cdfghbjnkml,', 'Buku_Kegiatan_TA_2022.docx', 2, '456789837365', '2022-08-24', '2022-08-24', '0000-00-00', 1, 'ppsdm', 'dxfcgvhbjnk', 'rtyvgdahjk'),
+(18, 'zsdfcgvhbjnkmsedrtfyguhijk', 'FORM_PERSYARATAN_TA_20221.docx', 2, '34567897890', '2022-08-10', '2022-08-19', '0000-00-00', 1, 'ppsdm', 'defgvhbhjk', 'sdfcghhjk'),
+(19, 'dfcgvhbjnkmdcfvgbhjkmvghbjk', 'Buku_Kegiatan_TA_20221.docx', 2, '2345678900987', '2022-08-25', '2022-08-26', '0000-00-00', 1, 'ppsdm', 'poltekpos', 'rapat besar'),
+(20, 'uyweguyfefgyuefeyfewugfeufeui', 'Buku_Kegiatan_TA_2022_(1)11.docx', 1, '2335656876655', '2022-08-24', '0000-00-00', '2022-08-25', 1, 'ppsdm', 'poltekpos', 'rapat');
 
 -- --------------------------------------------------------
 
@@ -364,7 +379,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -376,7 +391,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `menu_type`
@@ -394,7 +409,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
