@@ -12,7 +12,7 @@ class Laporan extends CI_Controller
     $this->load->library('form_validation');
   }
 
-  public function laporan_sk_print()
+  public function laporan_sk_print() // print laporan surat keluar berupa excel
   {
     $datareport = $this->Surat_keluar_model->get_limit_data_print();
 
@@ -69,7 +69,7 @@ class Laporan extends CI_Controller
     exit();
   }
 
-  public function laporan_sm_print()
+  public function laporan_sm_print() // print laporan surat masuk berupa excel
   {
     $datareport = $this->Surat_masuk_model->get_limit_data_print();
 
@@ -126,7 +126,7 @@ class Laporan extends CI_Controller
     exit();
   }
 
-  public function laporan_surat_masuk()
+  public function laporan_surat_masuk() //lihat laporan surat masuk
   {
     $q = urldecode($this->input->get('q', TRUE));
     $start = intval($this->input->get('start'));
@@ -176,7 +176,7 @@ class Laporan extends CI_Controller
   }
 
 
-  public function laporan_surat_keluar()
+  public function laporan_surat_keluar() //lihat laporan surat keluar
   {
     $q = urldecode($this->input->get('q', TRUE));
     $start = intval($this->input->get('start'));

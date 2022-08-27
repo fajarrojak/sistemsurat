@@ -15,7 +15,7 @@ class Surat_keluar extends CI_Controller
         $this->load->library('form_validation');
     }
 
-    public function index()
+    public function index() // list surat keluar
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -53,7 +53,7 @@ class Surat_keluar extends CI_Controller
         $this->load->view('template/backend', $data);
     }
 
-    public function read($id)
+    public function read($id) // lihat surat keluar
     {
         $row = $this->Surat_keluar_model->get_by_id($id);
         if ($row) {
@@ -85,7 +85,7 @@ class Surat_keluar extends CI_Controller
         }
     }
 
-    public function create()
+    public function create() // tambah surat keluar
     {
 
         $data = array(
@@ -164,7 +164,7 @@ class Surat_keluar extends CI_Controller
         }
     }
 
-    public function update($id)
+    public function update($id) // edit surat keluar
     {
         $row = $this->Surat_keluar_model->get_by_id($id);
 
@@ -251,31 +251,6 @@ class Surat_keluar extends CI_Controller
             $this->session->set_flashdata('success', 'Update Record Success');
             redirect(site_url('surat_keluar'));
         }
-    }
-
-    public function delete($id)
-    {
-        $row = $this->Surat_keluar_model->get_by_id($id);
-
-        if ($row) {
-            $this->Surat_keluar_model->delete($id);
-            $this->session->set_flashdata('success', 'Delete Record Success');
-            redirect(site_url('surat_keluar'));
-        } else {
-            $this->session->set_flashdata('error', 'Record Not Found');
-            redirect(site_url('surat_keluar'));
-        }
-    }
-
-    public function deletebulk()
-    {
-        $delete = $this->Surat_keluar_model->deletebulk();
-        if ($delete) {
-            $this->session->set_flashdata('success', 'Delete Record Success');
-        } else {
-            $this->session->set_flashdata('error', 'Delete Record failed');
-        }
-        echo $delete;
     }
 
     public function _rules()
